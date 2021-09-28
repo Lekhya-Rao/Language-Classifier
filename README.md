@@ -19,6 +19,7 @@ all attributes. The attribute with the maximum value of information gain is
 selected.
 
 ***Gain(A) = B( p/p+n) − Remainder (A)*** .
+
 ***Remainder (A) =summation(pk+nk/p+n * B( pk/pk+nk)*** .
 where k ranges from 0 to no. of values of attribute A.
 
@@ -61,27 +62,37 @@ This is done using the following steps:
 - examples: data set to build the training model
 - L: learning algorithm to generate the decision stumps.
 - k: no. of classifiers.
+
 (ii) initially, the error is zero and the weights of the sample are initialized to 1/no.
 of samples.
+
 (iii) using the decision tree algorith, a decision tree of depth 1 is generated.
+
 (iv) for each sample, the prediction of the classifier is obtained and this is
 compared with the actual classification specified.
+
 (v) error is updated to sum of weights of incorrectly classified samples.
+
 (vi) the amount of say for the classifier is computed using:
 z = log((1-error)/error)
+
 (vii) the weights of incorrectly classified samples are increased to
 wj = wj· e^z where 0<j<size of sample set
+                            
 (viii) the weights of correctly classified samples are decreased to
 wj = wj· e^-z where 0<j<size of sample set
+                             
 (ix) a new sample set of same size as the original sample set is created by
 randomly selecting a number between 0 and 1 and picking the sample which lies
 in this range. Due to the higher weight of the incorrectly classified samples, their
 range is wider and hence they have a greater chance of being included in the new
 sample set.
+                             
 (x) based on the new weights and the new sample set, the entire process is
 repeated again. for k times where k is the number of classifiers.
 It can be observed that eachclassifier is built on the basis of the performance of
 the previous classifier.
+                             
 The list of classifiers and their corresponding amout of say represents the training
 model of this algorithm.
 - In order to make a prediction, for a given sample the predictions of all classifiers
